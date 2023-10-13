@@ -17,6 +17,16 @@ fi
 PROXY_ARGS=${PROXY_ARGS:="-D 1080 -g"}
 echo "ocproxy args: $PROXY_ARGS"
 
+# Start ocproxy
+ocproxy &
+
+
+# Keep alive by curling its.pku.edu.cn every minute
+while true; do
+  curl -s its.pku.edu.cn > /dev/null
+  sleep 60
+done &
+
 if [ $OC_ARGS ]; then
   echo "openconnect args: $OC_ARGS"
   ARGS=($OC_ARGS)
