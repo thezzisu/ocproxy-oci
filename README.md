@@ -25,7 +25,7 @@ Content of pku.env:
 USER=Your student ID
 PASS=Your password
 URL=vpn.pku.edu.cn
-OC_ARGS=--protocol=nc
+OC_ARGS=--protocol=pulse
 ```
 Command:
 ```sh
