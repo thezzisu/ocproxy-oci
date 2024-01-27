@@ -30,5 +30,7 @@ OC_ARGS=--protocol=pulse
 Command:
 ```sh
 podman run -d --name pku-vpn --env-file=pku.env -p 11080:1080 ghcr.io/thezzisu/ocproxy:latest
+# or simple docker
+docker run -d --name pku-vpn --env-file=pku.env -p 11080:1080 ghcr.io/thezzisu/ocproxy:latest
 ```
 Access local port 11080 for a socks5 proxy.
