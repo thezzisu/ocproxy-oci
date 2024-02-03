@@ -14,4 +14,5 @@ RUN apk add --no-cache libevent bash openconnect
 COPY --from=builder /root/ocproxy/ocproxy /usr/local/bin/
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
+STOPSIGNAL SIGTERM
 CMD ["/entrypoint.sh"]

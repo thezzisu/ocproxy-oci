@@ -25,10 +25,12 @@ Content of pku.env:
 USER=Your student ID
 PASS=Your password
 URL=vpn.pku.edu.cn
-OC_ARGS=--protocol=nc
+OC_ARGS=--protocol=pulse
 ```
 Command:
 ```sh
 podman run -d --name pku-vpn --env-file=pku.env -p 11080:1080 ghcr.io/thezzisu/ocproxy:latest
+# or simple docker
+docker run -d --name pku-vpn --env-file=pku.env -p 11080:1080 ghcr.io/thezzisu/ocproxy:latest
 ```
 Access local port 11080 for a socks5 proxy.
