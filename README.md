@@ -26,6 +26,8 @@ USER=Your student ID
 PASS=Your password
 URL=vpn.pku.edu.cn
 OC_ARGS=--protocol=pulse
+ID_CARD=Your ID card last 6 digits
+PHONE_NUMBER=The 4th to 7th digits of your mobile phone number. e.g. 12345678910 -> 4567
 ```
 Command:
 ```sh
