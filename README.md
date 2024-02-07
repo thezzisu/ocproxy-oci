@@ -6,13 +6,14 @@ OCI Image for [cernekee/ocproxy](https://github.com/cernekee/ocproxy)
 
 This image reads following environment variables:
 
-| env        | required | description                          |
-|------------|----------|--------------------------------------|
-| USER       | \*       | VPN username                         |
-| PASS       | \*       | VPN password                         |
-| URL        | \*       | VPN url                              |
-| OC_ARGS    |          | Additional arguments for openconnect |
-| PROXY_ARGS |          | Additional arguments for ocproxy     |
+| env          | required | description                                                                 |
+| ------------ | -------- | --------------------------------------------------------------------------- |
+| USER         | \*       | VPN username                                                                |
+| PASS         | \*       | VPN password                                                                |
+| URL          | \*       | VPN url                                                                     |
+| OC_ARGS      |          | Additional arguments for openconnect                                        |
+| ID_CARD      | \*       | Last 6 digits of your ID card                                               |
+| PHONE_NUMBER | \*       | The 4th to 7th digits of your mobile phone number. e.g. 12345678910 -> 4567 |
 
 To use this image, simply set those envs.
 
@@ -21,6 +22,7 @@ To use this image, simply set those envs.
 ### PKU VPN
 
 Content of pku.env:
+
 ```
 USER=Your student ID
 PASS=Your password
@@ -29,10 +31,16 @@ OC_ARGS=--protocol=pulse
 ID_CARD=Your ID card last 6 digits
 PHONE_NUMBER=The 4th to 7th digits of your mobile phone number. e.g. 12345678910 -> 4567
 ```
+
 Command:
+
 ```sh
 podman run -d --name pku-vpn --env-file=pku.env -p 11080:1080 ghcr.io/thezzisu/ocproxy:latest
 # or simple docker
 docker run -d --name pku-vpn --env-file=pku.env -p 11080:1080 ghcr.io/thezzisu/ocproxy:latest
+# you can also build the image locally
+docker build -t pku-vpn-docker .
+docker run -d --name pku-vpn --env-file=pku.env -p 11080:1080 pku-vpn-docker
 ```
+
 Access local port 11080 for a socks5 proxy.
